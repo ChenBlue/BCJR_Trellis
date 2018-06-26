@@ -28,21 +28,29 @@ class BCJR:
 		for i in range(self.n + 1):
 			self.V.append(Vset(self.L))
 
-		self.V[0].add_vertex(self.L)
+		self.V[0].set_vertex([0, 0])
 		for i in range(self.n):
 			self.E.append(Eset(self.L))
 
 		for i in range(self.n):
 			self.build_edge_layer(i)
+			self.build_vertex_layer(i)
 
 	def build_edge_layer(self, layer):
 		print("Building edge",layer)
 		print("Vertex number in layer", layer,":", self.V[layer].get_vertice_number())
 		for vindex in range(self.V[layer].get_vertice_number()):
+			if self.V[layer].vertice[vindex] == 0:
+				continue
 			for symbol in range (2**self.b):
-				self.E[vindex].add_edge(symbol)
-				#print(self.H[layer].value*symbol)
+				self.E[layer].add_edge(self.V[layer].vertice[vindex], symbol, self.H[layer].values)
+				self.E[layer].print_Eset()
+				print("Number of edge:", self.E[layer].get_edgeNum())
 
+	def build_vertex_layer(self, layer):
+		print("Building vertex", layer)
+		for edge in self.E[layer].edgelist:
+			self.V[layer + 1].set_vertex(edge.end.val)
 		
 	def get_len(self):
 		return self.n
