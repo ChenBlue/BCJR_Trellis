@@ -9,3 +9,6 @@ class Vset:
 	def add_vertex(self, val):
 		newV = Vertex(self.L)
 		self.vertice.append(newV)
+
+	def get_vertice_number(self):
+		return len(self.vertice)
