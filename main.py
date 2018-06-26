@@ -1,14 +1,15 @@
 from BCJR import BCJR
-import csv
-import pandas as pd
-import numpy as np
 
 def main(filename):
 	print("Hello world!")
-	df = pd.read_csv(filename, header=None)
-	print(df)
 	
-	bc = BCJR(1,2)
+	
+	bcjr = BCJR(filename)
+	print("length:", bcjr.get_len())
+	print("dimension:", bcjr.get_dim())
+	print("bit:", bcjr.get_bit())
+
+	bcjr.build()
 
 if __name__ == '__main__':
-    main('file2.csv')
+    main('file1.csv')
