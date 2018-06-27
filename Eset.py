@@ -1,5 +1,6 @@
 from Edge import Edge
 from Vertex import Vertex
+from Vset import Vset
 
 class Eset:
 	def __init__(self, L):
@@ -12,8 +13,19 @@ class Eset:
 		tmpV.add(addValues * symbol)
 		newE = Edge(self.L, startV, symbol, tmpV)
 		self.edgelist.append(newE)
-		#self.edgeNum = self.edgeNum + 1
 
+	def remove_edge(self, vset):
+		vertex_val_list = []
+		for v in vset.vertice:
+			if(type(v) == Vertex):
+				vertex_val_list.append(v.val_to_index())
+
+		print(vertex_val_list)
+		del_index_list = []
+		for e in reversed(range(len(self.edgelist))):
+			if self.edgelist[e].end.val_to_index() not in vertex_val_list:
+				del self.edgelist[e]
+				
 	def get_edgeNum(self):
 		return len(self.edgelist)
 

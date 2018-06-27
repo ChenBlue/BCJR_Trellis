@@ -10,17 +10,22 @@ class Vset:
 		newV = Vertex(self.L)
 		self.vertice.append(newV)
 
-	def set_vertex(self, index, val):
-		#index = self.val_to_index(val)
+	def set_vertex(self, val):
+		tmpV = Vertex(self.L, val)
+		index = tmpV.val_to_index()
 		self.vertice[index] = Vertex(self.L, val)
 
-	def val_to_index(self, val):
-		index = 0
-		multiple = 1
-		for i in reversed(range(len(val))):
-			index = index + multiple * val[i]
-			multiple *=2
-		return index
+	def keep_vertex(self, index_list):
+		for i in range(len(self.vertice)):
+			if i not in index_list:
+				self.vertice[i] = 0
+
+	def remove_vertex(self, eset):
+		vertex_val_list = []
+		for e in eset.edgelist:
+			vertex_val_list.append(e.start.val_to_index())
+		#print(vertex_val_list)
+		self.keep_vertex(vertex_val_list)
 
 	def get_vertice_number(self):
 		return len(self.vertice)

@@ -13,3 +13,12 @@ class Vertex:
 	def add(self, addValues):
 		self.val = (self.val + addValues) % 2
 
+	def val_to_index(self):
+		index = 0
+		multiple = 1
+		for i in reversed(range(len(self.val))):
+			index = index + multiple * self.val[i]
+			multiple *=2
+		return index
+
+

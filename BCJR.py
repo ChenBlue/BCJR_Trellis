@@ -16,14 +16,6 @@ def readcsv(filename):
 	df = pd.read_csv(filename, header=None)
 	return df, b, n, k, L
 
-def val_to_index(val):
-	index = 0
-	multiple = 1
-	for i in reversed(range(len(val))):
-		index = index + multiple * val[i]
-		multiple *=2
-	return index
-
 class BCJR:		
 	def __init__(self, filename):
 		print("I am BCJR!")
@@ -36,16 +28,29 @@ class BCJR:
 		self.V = []
 		self.E = []
 
+		# Build V subset
 		for i in range(self.n + 1):
 			self.V.append(Vset(self.L))
 
-		self.V[0].set_vertex(val_to_index([0, 0]), [0, 0])
-		for i in range(self.n):
+		# Initialize the vertex in first layer as 0
+		self.V[0].set_vertex([0, 0])
+		for i in range(self.n): # Build E subset
 			self.E.append(Eset(self.L))
 
 		for i in range(self.n):
 			self.build_edge_layer(i)
 			self.build_vertex_layer(i)
+
+		# Only keep vertice 0 at the last layer
+		self.V[-1].keep_vertex([0])
+
+
+		for i in reversed(range(self.n)):
+			self.E[i].remove_edge(self.V[i+1])
+			self.V[i].remove_vertex(self.E[i])
+
+		#self.E[-1].print_Eset()
+
 
 	def build_edge_layer(self, layer):
 		print("### Building edge",layer)
@@ -55,13 +60,13 @@ class BCJR:
 			for symbol in range (2**self.b):
 				self.E[layer].add_edge(self.V[layer].vertice[vindex], symbol, self.H[layer].values)
 
-		print("Number of edge:", self.E[layer].get_edgeNum())
+		#print("Number of edge:", self.E[layer].get_edgeNum())
 		self.E[layer].print_Eset()
 
 	def build_vertex_layer(self, layer):
 		print("### Building vertex", layer)
 		for edge in self.E[layer].edgelist:
-			self.V[layer + 1].set_vertex(val_to_index(edge.end.val), edge.end.val)
+			self.V[layer + 1].set_vertex(edge.end.val)
 
 		self.V[layer+1].print_Vset()
 		
@@ -82,7 +87,7 @@ class BCJR:
 			vLayer = self.V[layer]
 			for v in range(vLayer.get_vertice_number()):
 				if(type(vLayer.vertice[v]) == Vertex):
-					index = val_to_index(vLayer.vertice[v].val)
+					index = vLayer.vertice[v].val_to_index()
 					vName = str(layer) + str(index)
 					pos[vName] = (layer, index)
 
@@ -90,8 +95,8 @@ class BCJR:
 		for layer in range(i,j):
 			eLayer = self.E[layer]
 			for e in eLayer.edgelist:
-				start_index = val_to_index(e.start.val)
-				end_index = val_to_index(e.end.val)
+				start_index = e.start.val_to_index()
+				end_index = e.end.val_to_index()
 				edge_list.append((str(layer) + str(start_index), str(layer+1) + str(end_index)))
 
 		print("pos dictionary:", pos)
