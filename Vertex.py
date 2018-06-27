@@ -11,6 +11,7 @@ class Vertex:
 		self.val = val
 
 	def add(self, addValues):
+		#print("val:", self.L, self.val)
 		self.val = (self.val + addValues) % 2
 
 	def val_to_index(self):

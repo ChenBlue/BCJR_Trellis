@@ -11,7 +11,7 @@ def main(filename):
 
 	bcjr.build()
 
-	bcjr.plot_section(0,5)
+	bcjr.plot_section(0,bcjr.get_len())
 
 if __name__ == '__main__':
-    main('file1.csv')
+    main('file2.csv')

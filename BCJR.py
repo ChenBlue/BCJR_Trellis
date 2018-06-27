@@ -33,7 +33,7 @@ class BCJR:
 			self.V.append(Vset(self.L))
 
 		# Initialize the vertex in first layer as 0
-		self.V[0].set_vertex([0, 0])
+		self.V[0].set_vertex([0 for i in range(self.L)])
 		for i in range(self.n): # Build E subset
 			self.E.append(Eset(self.L))
 
@@ -57,18 +57,19 @@ class BCJR:
 		for vindex in range(self.V[layer].get_vertice_number()):
 			if self.V[layer].vertice[vindex] == 0:
 				continue
+			#print("H values:", self.H[layer].values)
 			for symbol in range (2**self.b):
 				self.E[layer].add_edge(self.V[layer].vertice[vindex], symbol, self.H[layer].values)
 
 		#print("Number of edge:", self.E[layer].get_edgeNum())
-		self.E[layer].print_Eset()
+		#self.E[layer].print_Eset()
 
 	def build_vertex_layer(self, layer):
 		print("### Building vertex", layer)
 		for edge in self.E[layer].edgelist:
 			self.V[layer + 1].set_vertex(edge.end.val)
 
-		self.V[layer+1].print_Vset()
+		#self.V[layer+1].print_Vset()
 		
 	def get_len(self):
 		return self.n
@@ -101,14 +102,12 @@ class BCJR:
 
 		print("pos dictionary:", pos)
 		print("Edge list:", edge_list)
-		#pos={'0':(0,0),'1':(1,1),'2':(1,2),'3':(1,0)} 
 		G = nx.Graph()
-		#edge_list = [('0','2'),('0','1'),('0','3')]
 		G.add_edges_from(edge_list)
 		#pos = nx.spring_layout(G) # positions for all nodes
 		#G.add_edge(1,2)
 		#nx.draw(G)
-		nx.draw_networkx_nodes(G,pos,node_size=700,)
-		nx.draw_networkx_edges(G,pos, width=6)
+		nx.draw_networkx_nodes(G,pos,node_size=200)
+		nx.draw_networkx_edges(G,pos, width=3)
 		plt.show()
 
