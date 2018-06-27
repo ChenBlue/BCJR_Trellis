@@ -11,5 +11,7 @@ def main(filename):
 
 	bcjr.build()
 
+	bcjr.plot_section(0,5)
+
 if __name__ == '__main__':
     main('file1.csv')

@@ -10,8 +10,8 @@ class Vset:
 		newV = Vertex(self.L)
 		self.vertice.append(newV)
 
-	def set_vertex(self, val):
-		index = self.val_to_index(val)
+	def set_vertex(self, index, val):
+		#index = self.val_to_index(val)
 		self.vertice[index] = Vertex(self.L, val)
 
 	def val_to_index(self, val):
@@ -24,3 +24,10 @@ class Vset:
 
 	def get_vertice_number(self):
 		return len(self.vertice)
+
+	def print_Vset(self):
+		for i in range(len(self.vertice)):
+			if(type(self.vertice[i]) == Vertex):
+				print(self.vertice[i].val)
+			else:
+				print("No vertex.")
