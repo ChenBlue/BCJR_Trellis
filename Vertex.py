@@ -30,11 +30,12 @@ class Vertex:
 		prim_poly = self.prim_poly(self.b)
 		prim_poly_dec = self.bin2dec(prim_poly)
 		prim_deg = len(prim_poly)
+		#print(x, a, b, prim_poly, prim_poly_dec, prim_deg)
 
 		deg = len(bin(x)[2:])
 		while deg > self.b:
 			Q = prim_poly_dec * (2**(deg - prim_deg))
-			x = x ^ deg
+			x = x ^ Q
 			deg = len(bin(x)[2:])
 
 		#print("Result of multiplication:", x)
