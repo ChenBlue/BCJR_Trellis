@@ -16,7 +16,12 @@ class Vertex:
 		#print("val:", self.L, self.val)
 		#sum = list(map(add, self.val, addValues))
 		#self.val = np.mod(np.asarray(sum), 2).tolist()
-		self.val = (self.val + addValues) % (2**self.b)
+		#self.val = (self.val + addValues) % (2**self.b)
+		#tmpVal = addValues
+		#print(type(addValues[0]), type(self.val[0]))
+		self.val = np.bitwise_xor(self.val, addValues)
+
+	#def 
 
 	def val_to_index(self):
 		index = 0

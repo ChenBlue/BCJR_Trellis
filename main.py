@@ -2,6 +2,10 @@ from BCJR import BCJR
 
 def main(filename):
 	print("Hello world!")
+
+	#x = 3
+	#y = 6
+	#print(x^y)
 	
 	
 	bcjr = BCJR(filename)

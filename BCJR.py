@@ -22,7 +22,7 @@ def binstr2dec(strlist):
 		#numval.append(int(strlist[i], 2))
 		numval[i] = int(strlist[i], 2)
 	#print(self.val, numval)
-	return numval
+	return numval.astype(int)
 
 print(binstr2dec(["101", "000", "111", "010"]))
 
@@ -43,7 +43,7 @@ class BCJR:
 			self.V.append(Vset(self.L, self.b))
 
 		# Initialize the vertex in first layer as 0
-		self.V[0].set_vertex([0 for i in range(self.L)])
+		self.V[0].set_vertex(np.zeros(self.L, dtype=int))
 		for i in range(self.n): # Build E subset
 			self.E.append(Eset(self.L, self.b))
 
