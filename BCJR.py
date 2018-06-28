@@ -109,7 +109,7 @@ class BCJR:
 			for e in eLayer.edgelist:
 				start_index = e.start.val_to_index()
 				end_index = e.end.val_to_index()
-				edge_list.append((str(layer) + str(start_index), str(layer+1) + str(end_index)))
+				edge_list.append((str(layer) + str(start_index), str(layer+1) + str(end_index), {'weight': e.symbol}))
 
 		print("pos dictionary:", pos)
 		print("Edge list:", edge_list)
@@ -118,7 +118,11 @@ class BCJR:
 		#pos = nx.spring_layout(G) # positions for all nodes
 		#G.add_edge(1,2)
 		#nx.draw(G)
-		nx.draw_networkx_nodes(G,pos,node_size=200)
-		nx.draw_networkx_edges(G,pos, width=3)
+		nx.draw_networkx_nodes(G, pos, node_size=100)
+		nx.draw_networkx_edges(G, pos, width=2)
+		labels = nx.get_edge_attributes(G, 'weight')
+		nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
+		
+		plt.gca().invert_yaxis()
 		plt.show()
 
