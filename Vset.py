@@ -5,7 +5,7 @@ class Vset:
 	def __init__(self, L, b):
 		self.L = L
 		self.b = b
-		self.vertice = [0 for i in range(2**L)]
+		self.vertice = [0 for i in range((2**self.b)**L)]
 
 	def set_vertex(self, val):
 		tmpV = Vertex(self.L, self.b, val)

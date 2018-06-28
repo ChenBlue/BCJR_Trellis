@@ -53,7 +53,7 @@ class BCJR:
 
 		# Only keep vertice 0 at the last layer
 		self.V[-1].keep_vertex([0])
-
+		#self.V[-1].vertice[0].multiply(np.array([1, 1, 0]),1)
 
 		for i in reversed(range(self.n)):
 			self.E[i].remove_edge(self.V[i+1])

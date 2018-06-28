@@ -11,7 +11,7 @@ class Eset:
 
 	def add_edge(self, startV, symbol, addValues):
 		tmpV = Vertex(self.L, self.b, startV.val)
-		tmpV.add(addValues * symbol)
+		tmpV.add(tmpV.multiply(addValues, symbol))
 		newE = Edge(self.L, startV, symbol, tmpV)
 		self.edgelist.append(newE)
 
