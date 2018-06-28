@@ -2,18 +2,16 @@ import numpy as np
 from Vertex import Vertex
 
 class Vset:
-	def __init__(self, L):
+	def __init__(self, L, b):
 		self.L = L
+		self.b = b
 		self.vertice = [0 for i in range(2**L)]
 
-	def add_vertex(self, val):
-		newV = Vertex(self.L)
-		self.vertice.append(newV)
-
 	def set_vertex(self, val):
-		tmpV = Vertex(self.L, val)
-		index = tmpV.val_to_index()
-		self.vertice[index] = Vertex(self.L, val)
+		tmpV = Vertex(self.L, self.b, val)
+		index = int(tmpV.val_to_index())
+		#print("Index:", index)
+		self.vertice[index] = Vertex(self.L, self.b, val)
 
 	def keep_vertex(self, index_list):
 		for i in range(len(self.vertice)):

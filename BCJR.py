@@ -13,8 +13,18 @@ def readcsv(filename):
 	n = len(df.columns)
 	L = len(df.index)
 	k = n - L
-	df = pd.read_csv(filename, header=None)
+	#df = pd.read_csv(filename, header=None)
 	return df, b, n, k, L
+
+def binstr2dec(strlist):
+	numval = np.zeros(len(strlist))
+	for i in range(len(strlist)):
+		#numval.append(int(strlist[i], 2))
+		numval[i] = int(strlist[i], 2)
+	#print(self.val, numval)
+	return numval
+
+print(binstr2dec(["101", "000", "111", "010"]))
 
 class BCJR:		
 	def __init__(self, filename):
@@ -30,12 +40,12 @@ class BCJR:
 
 		# Build V subset
 		for i in range(self.n + 1):
-			self.V.append(Vset(self.L))
+			self.V.append(Vset(self.L, self.b))
 
 		# Initialize the vertex in first layer as 0
 		self.V[0].set_vertex([0 for i in range(self.L)])
 		for i in range(self.n): # Build E subset
-			self.E.append(Eset(self.L))
+			self.E.append(Eset(self.L, self.b))
 
 		for i in range(self.n):
 			self.build_edge_layer(i)
@@ -59,7 +69,8 @@ class BCJR:
 				continue
 			#print("H values:", self.H[layer].values)
 			for symbol in range (2**self.b):
-				self.E[layer].add_edge(self.V[layer].vertice[vindex], symbol, self.H[layer].values)
+				#self.E[layer].add_edge(self.V[layer].vertice[vindex], symbol, self.H[layer].values)
+				self.E[layer].add_edge(self.V[layer].vertice[vindex], symbol, binstr2dec(self.H[layer].values))
 
 		#print("Number of edge:", self.E[layer].get_edgeNum())
 		#self.E[layer].print_Eset()

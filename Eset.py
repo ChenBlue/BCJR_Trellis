@@ -3,13 +3,14 @@ from Vertex import Vertex
 from Vset import Vset
 
 class Eset:
-	def __init__(self, L):
+	def __init__(self, L, b):
 		self.L = L
+		self.b = b
 		self.edgelist = []
 		#self.edgeNum = 0
 
 	def add_edge(self, startV, symbol, addValues):
-		tmpV = Vertex(self.L, startV.val)
+		tmpV = Vertex(self.L, self.b, startV.val)
 		tmpV.add(addValues * symbol)
 		newE = Edge(self.L, startV, symbol, tmpV)
 		self.edgelist.append(newE)
