@@ -1,13 +1,6 @@
 from BCJR import BCJR
 
-def main(filename):
-	print("Hello world!")
-
-	#x = 3
-	#y = 6
-	#print(x^y)
-	
-	
+def main(filename):	
 	bcjr = BCJR(filename)
 	print("length:", bcjr.get_len())
 	print("dimension:", bcjr.get_dim())

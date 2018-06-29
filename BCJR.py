@@ -120,8 +120,8 @@ class BCJR:
 		#nx.draw(G)
 		nx.draw_networkx_nodes(G, pos, node_size=100)
 		nx.draw_networkx_edges(G, pos, width=2)
-		labels = nx.get_edge_attributes(G, 'weight')
-		nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
+		#labels = nx.get_edge_attributes(G, 'weight')
+		#nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
 		
 		plt.gca().invert_yaxis()
 		plt.show()
