@@ -47,7 +47,7 @@ I implemented a function *plot_section(i,j)* which can plot the BCJR trellis fro
 ### Case 1
 parity-check matrix **H**: </br>
 | 1 | 1 | 1 | 0 | 0 | 0 | 0 |
-| -- | -- | -- | -- |---| --- | --- 
+| --- | --- | --- | --- | --- | --- | --- 
 | 0 | 1 | 0 | 1 | 0 | 0 | 0
 | 1 | 0 | 0 | 0 | 1 | 1 | 0
 | 1 | 0 | 0 | 0 | 1 | 0 | 1
