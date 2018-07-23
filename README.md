@@ -46,8 +46,19 @@ I implemented a function *plot_section(i,j)* which can plot the BCJR trellis fro
 
 ### Case 1
 parity-check matrix **H**: </br>
-| 1 | 1 | 1 | 0 | 0 | 0 | 0 |
-| --- | --- | --- | --- | --- | --- | --- 
-| 0 | 1 | 0 | 1 | 0 | 0 | 0
-| 1 | 0 | 0 | 0 | 1 | 1 | 0
-| 1 | 0 | 0 | 0 | 1 | 0 | 1
+![case1H](https://github.com/ChenBlue/BCJR_Trellis/blob/master/FIG/case1_H.JPG) </br>
+**BCJR trellis**: </br>
+![case1result](https://github.com/ChenBlue/BCJR_Trellis/blob/master/FIG/case1_result.png)
+
+### Case 2
+parity-check matrix **H**: </br>
+![case2H](https://github.com/ChenBlue/BCJR_Trellis/blob/master/FIG/case2_H.JPG) </br>
+**BCJR trellis**: </br>
+![case2result](https://github.com/ChenBlue/BCJR_Trellis/blob/master/FIG/case2_result.png)
+
+### Case 3
+parity-check matrix **H**: </br>
+![case3H](https://github.com/ChenBlue/BCJR_Trellis/blob/master/FIG/case3_H.JPG) </br>
+**BCJR trellis**: </br>
+![case3result](https://github.com/ChenBlue/BCJR_Trellis/blob/master/FIG/case3_result.png)
+
